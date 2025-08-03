@@ -10,6 +10,9 @@ import UIKit
 class ViewController: UIViewController {
     
     
+    @IBOutlet weak var pokemonLabel: UILabel!
+    
+    @IBOutlet weak var pokemonImage: UIImageView!
     
     let pokemonDictionary: [Int: String] = [
             0: "Wartortle",
@@ -37,8 +40,13 @@ class ViewController: UIViewController {
             22: "Lapras",
             23: "Sandshrew"
         ];
-
-
+    
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        let pokemon = Int.random(in: 0..<pokemonDictionary.count)
+        pokemonImage.image = UIImage(named:String(describing: pokemon))
+        pokemonLabel.text = pokemonDictionary[pokemon]!
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
